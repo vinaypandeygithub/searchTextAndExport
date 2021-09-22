@@ -46,7 +46,7 @@ public class Program {
                             {
 
                                 String extractedLine = "";
-                                if(line.indexOf(searchtext) > searchtext.length()) {
+                                if((line.indexOf(searchtext) + searchtext.length()) <  (line.length() - 2)) {
                                     extractedLine = line.substring(line.indexOf(searchtext) + searchtext.length(), line.length() - 2);
                                 }
                                 else
