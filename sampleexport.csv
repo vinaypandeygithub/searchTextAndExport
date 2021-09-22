@@ -1,0 +1,3 @@
+Path,LineNumber,ExtractedLine
+C:\ProjectTooling\TasksAPI.cs,30,rabbitmq://{configBus.Address.Host}
+C:\ProjectTooling\DashBoardServices\Program.cs,48,"{Assembly.GetExecutingAssembly().GetName().Name.ToLower().Replace(""."", ""-"")}-{environment?.ToLower().Replace(""."", ""-"")}-{DateTime.UtcNow:yyyy-MM"
