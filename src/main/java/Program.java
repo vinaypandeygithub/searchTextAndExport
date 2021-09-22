@@ -16,7 +16,7 @@ public class Program {
     static List<String[]> dataLines = new ArrayList<>();
     String fileExtension = "cs";
     String CSV_FILE_NAME = "C:\\Git\\search.csv";
-    String searchtext = "= $\"";
+    String searchtext = "= $";
     public static void main(String[] args) throws IOException {
         dataLines.add(new String[]
                 { "Path", "LineNumber", "ExtractedLine" });
@@ -35,14 +35,21 @@ public class Program {
                 walk( f.getAbsolutePath() );
             }
             else {
-                if(f.getName().endsWith("cs")) {
+                if(f.getName().endsWith(fileExtension)) {
                     Path filePath = Paths.get(f.getAbsolutePath());
                     List<String> lines = Files.readAllLines(filePath, StandardCharsets.UTF_8);
                     int i=1;
                     for (String line : lines) {
                         if(line.toLowerCase().contains(searchtext))
                         {
-                            String extractedLine = line.substring(line.indexOf(searchtext) + searchtext.length(),line.length() -2);
+                            String extractedLine = "";
+                            if(line.indexOf(searchtext) > searchtext.length()) {
+                                extractedLine = line.substring(line.indexOf(searchtext) + searchtext.length(), line.length() - 2);
+                            }
+                            else
+                            {
+                                extractedLine=line;
+                            }
                             dataLines.add(new String[]
                                     { f.getAbsolutePath(), String.valueOf(i), extractedLine });
                         }
