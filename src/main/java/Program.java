@@ -42,16 +42,23 @@ public class Program {
                     for (String line : lines) {
                         if(line.toLowerCase().contains(searchtext))
                         {
-                            String extractedLine = "";
-                            if(line.indexOf(searchtext) > searchtext.length()) {
-                                extractedLine = line.substring(line.indexOf(searchtext) + searchtext.length(), line.length() - 2);
-                            }
-                            else
+                            try
                             {
-                                extractedLine=line;
+
+                                String extractedLine = "";
+                                if(line.indexOf(searchtext) > searchtext.length()) {
+                                    extractedLine = line.substring(line.indexOf(searchtext) + searchtext.length(), line.length() - 2);
+                                }
+                                else
+                                {
+                                    extractedLine=line;
+                                }
+                                dataLines.add(new String[]
+                                        { f.getAbsolutePath(), String.valueOf(i), extractedLine });
                             }
-                            dataLines.add(new String[]
-                                    { f.getAbsolutePath(), String.valueOf(i), extractedLine });
+                            catch (Exception ex) {
+                                System.out.println("Problem with " + line);
+                            }
                         }
                         i++;
                     }
