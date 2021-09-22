@@ -42,23 +42,15 @@ public class Program {
                     for (String line : lines) {
                         if(line.toLowerCase().contains(searchtext))
                         {
-                            try
-                            {
-
-                                String extractedLine = "";
-                                if((line.indexOf(searchtext) + searchtext.length()) <  (line.length() - 2)) {
-                                    extractedLine = line.substring(line.indexOf(searchtext) + searchtext.length(), line.length() - 2);
-                                }
-                                else
-                                {
-                                    extractedLine=line;
-                                }
-                                dataLines.add(new String[]
-                                        { f.getAbsolutePath(), String.valueOf(i), extractedLine });
+                            String extractedLine = "";
+                            try {
+                                extractedLine = line.substring(line.indexOf(searchtext) + searchtext.length(), line.length() - 2);
                             }
-                            catch (Exception ex) {
-                                System.out.println("Problem with " + line);
+                            catch(Exception ex){
+                                extractedLine = line;
                             }
+                            dataLines.add(new String[]
+                                    { f.getAbsolutePath(), String.valueOf(i), extractedLine });
                         }
                         i++;
                     }
