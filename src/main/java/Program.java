@@ -42,9 +42,9 @@ public class Program {
                     for (String line : lines) {
                         if(line.toLowerCase().contains(searchtext))
                         {
-                            String extractedLine = "";
+                           String extractedLine = "";
                             try {
-                                extractedLine = line.substring(line.indexOf(searchtext) + searchtext.length(), line.length() - 2);
+                                extractedLine = line.substring(line.trim().indexOf(searchtext) + 3, line.length() -2);
                             }
                             catch(Exception ex){
                                 extractedLine = line;
